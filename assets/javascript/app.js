@@ -15,10 +15,10 @@ $(document).ready(function () {
 
     var database = firebase.database();
 
-    var train = "";
-    var destination = "";
-    var time = 0;
-    var frequency = 0;
+    // var train = "";
+    // var destination = "";
+    // var time = 0;
+    // var frequency = 0;
 
     $(".submit").on("click", function(event) {
 
@@ -42,11 +42,43 @@ $(document).ready(function () {
     database.ref().on("child_added", function(snapshot) {
 
         var sv = snapshot.val();
+        
+        // console.log (sv.train);
+        // console.log (sv.destination);
+        // console.log (sv.time);
+        // console.log (sv.frequency);
 
-        console.log (sv.train);
-        console.log (sv.destination);
-        console.log (sv.time);
-        console.log (sv.frequency);
+        var trainTime = sv.time;
+        console.log(trainTime);
+
+        // var currentTime = moment();
+        // console.log(moment(currentTime).format("HH:mm"));
+
+        // var timeConvert = moment(trainTime).subtract(1, "years");
+        // console.log(timeConvert); 
+
+        
+
+
+
+        // var tRow = $("<tr>");
+
+        // var trainTd = $("<td>").text(sv.train);
+        // var destinationTd = $("<td>").text(sv.destination);
+        // var frequencyTd = $("<td>").text(sv.frequency);
+        // var timeTd = $("<td>").text(sv.time);
+        // var nextArrival = $("<td>").text("#");
+        // var minutesAway = $("<td>").text("#");
+
+
+        // tRow.append(trainTd, destinationTd, frequencyTd, nextArrival, minutesAway);
+
+        // $("tbody").append(tRow);
+
+
+
+
+
         
     })
 
