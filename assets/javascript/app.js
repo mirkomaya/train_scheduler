@@ -15,13 +15,24 @@ $(document).ready(function () {
 
     var database = firebase.database();
 
-    $(".submit").on("click", function (event) {
+    var train = "";
+    var destination = "";
+    var time = 0;
+    var frequency = 0;
+
+    $(".submit").on("click", function(event) {
 
         event.preventDefault();
 
-        var trainName = $(".train-name").val().trim();
+        var train = $(".train-name").val().trim();
+        var destination = $(".destination").val().trim();
+        var time = $(".train-time").val().trim();
+        var frequency = $(".frequency").val().trim();
 
-        console.log(trainName);
+        console.log(train);
+        console.log(destination);
+        console.log(time);
+        console.log(frequency);
 
 
 
