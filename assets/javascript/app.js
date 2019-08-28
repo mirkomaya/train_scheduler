@@ -29,14 +29,25 @@ $(document).ready(function () {
         var time = $(".train-time").val().trim();
         var frequency = $(".frequency").val().trim();
 
-        console.log(train);
-        console.log(destination);
-        console.log(time);
-        console.log(frequency);
+        database.ref().push( {
+            train: train,
+            destination: destination,
+            time: time,
+            frequency: frequency,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+        });
 
+    })
 
+    database.ref().on("child_added", function(snapshot) {
 
+        var sv = snapshot.val();
 
+        console.log (sv.train);
+        console.log (sv.destination);
+        console.log (sv.time);
+        console.log (sv.frequency);
+        
     })
 
 
