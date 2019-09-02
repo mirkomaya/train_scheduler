@@ -20,7 +20,7 @@ $(document).ready(function () {
     // var time = 0;
     // var frequency = 0;
 
-    $(".submit").on("click", function(event) {
+    $(".submit").on("click", function (event) {
 
         event.preventDefault();
 
@@ -29,7 +29,8 @@ $(document).ready(function () {
         var time = $(".train-time").val().trim();
         var frequency = $(".frequency").val().trim();
 
-        database.ref().push( {
+
+        database.ref().push({
             train: train,
             destination: destination,
             time: time,
@@ -37,27 +38,57 @@ $(document).ready(function () {
             dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
 
+        $(".train-name").val("");
+        $(".destination").val("");
+        $(".train-time").val("");
+        $(".frequency").val("");
+
     })
 
-    database.ref().on("child_added", function(snapshot) {
+    database.ref().on("child_added", function (snapshot) {
 
-        var sv = snapshot.val();
-        
-        // console.log (sv.train);
-        // console.log (sv.destination);
-        // console.log (sv.time);
-        // console.log (sv.frequency);
+         
+        var firstTime = moment(snapshot.val().time, "hh:mm").subtract(1, "years");
+        console.log(firstTime);
 
-        var trainTime = sv.time;
-        console.log(trainTime);
+
+
+
+
+
+        // var sv = snapshot.val();
+
+        // var firstTime = sv.time;
+        // console.log(firstTime)
+
+        // var currentTime = moment();
+        // console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+        // var firstTimeConverted = moment(firstTime, "X").subtract(1, "years");
+        // console.log(firstTimeConverted);
+
+        // var trainTime = moment(sv.time.val(), "hh:mm").subtract(1, "years");
+        // console.log(trainTime)
+
+
+        // var trainName = sv.train;
+        // var trainDest = sv.destination;
+        // var trainTime = sv.time;
+        // var trainFreq = sv.frequency;
+
+        // var timeConvert = moment.unix(trainTime).format("HH:mm");
+        // console.log(timeConvert); 
 
         // var currentTime = moment();
         // console.log(moment(currentTime).format("HH:mm"));
 
-        // var timeConvert = moment(trainTime).subtract(1, "years");
-        // console.log(timeConvert); 
+        // var diffTime = moment().diff(moment(trainTime, "X"), "minutes");
+        // console.log(diffTime);
 
-        
+
+
+
+
 
 
 
@@ -79,7 +110,7 @@ $(document).ready(function () {
 
 
 
-        
+
     })
 
 
@@ -94,3 +125,6 @@ $(document).ready(function () {
 
 
 })
+
+
+
