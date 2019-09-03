@@ -18,9 +18,6 @@ $(document).ready(function () {
 
     var database = firebase.database();
 
-    var currentTime = moment();
-    $(".current-time").text("Current Time: " + moment(currentTime).format("HH:mm A"));
-    // console.log(moment(currentTime).format("HH:mm"));
 
     $(".submit").on("click", function (event) {
 
