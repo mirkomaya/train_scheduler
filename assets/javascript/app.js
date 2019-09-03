@@ -10,15 +10,17 @@ $(document).ready(function () {
         messagingSenderId: "191757110856",
         appId: "1:191757110856:web:08409de0bdb06ad5"
     };
+
+
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
+
     var database = firebase.database();
 
-    // var train = "";
-    // var destination = "";
-    // var time = 0;
-    // var frequency = 0;
+    var currentTime = moment();
+    $(".current-time").text("Current Time: " + moment(currentTime).format("HH:mm A"));
+    // console.log(moment(currentTime).format("HH:mm"));
 
     $(".submit").on("click", function (event) {
 
@@ -28,16 +30,6 @@ $(document).ready(function () {
         var destination = $(".destination").val().trim();
         var time = $(".train-time").val().trim();
         var frequency = $(".frequency").val().trim();
-
-        // var newTrain = {
-        //     train: train,
-        //     destination: destination,
-        //     time: time,
-        //     frequency: frequency,
-        // };
-
-        // database.ref().push(newTrain);
-
 
         database.ref().push({
             train: train,
@@ -91,21 +83,9 @@ $(document).ready(function () {
             $("<td>").text(tMinutesTillTrain),
         );
 
-
         $("tbody").append(tRow);
 
-        
     })
-
-
-
-
-
-
-
-
-
-
 
 
 })
